@@ -1,36 +1,19 @@
 ;;;; geometry.lisp
 
-;; Package info, if needed
-; (defpackage :com.div0.geometry
-;   (:nicknames :geometry
-;                :geom)
-;   (:documentation "A geometry library with vector and other functions.")
-;   (:use #:cl)
-;   (:export :distance^2 :distance
-;             :vec+ :vec- :vec* :vec/ :vec-scale
-;             :magnitude  :normalize
-;             :dot-product :dot-product-normalized :cross-product-3d
-;             :x :y :z
-;             :average :midpoint
-;             :clamp :map-value))
-
 (in-package :com.div0.geometry)
-
-;; may not work \|/
-(defmacro check-number (form)
- `(unless (numberp ,form))
- (error (format nil "~a is not a number." form)))
 
 (defun clamp (value min-val max-val)
  "Return a value that cuts the value off at the min-val and the max-val."
- (if (all (map 'list #'numberp (list value min-val max-val)))
+ (if (every #'numberp (list value min-val max-val))
   (max min-val (min value max-val))
   (error "Not given all number inputs")))
 
-(defun map-value (value in-min in-max out-min out-max))
-"Map the value that from the in range to the out range"
+(defun map-value (value in-min in-max out-min out-max)
+  
+  "Map the value that from the in range to the out range."
+
   ;;ostart + (ostop - ostart) * ((value - istart) / (istop - istart))
-(+ out-min (* (- out-max out-min) (/ (- value in-min) (- in-max in-min))))
+  (+ out-min (* (- out-max out-min) (/ (- value in-min) (- in-max in-min)))))
 
 (defun distance^2 (vec1 vec2)
   "Gives the distance squared between two vectors, taking the shortest vector as the length for both (I think)"
