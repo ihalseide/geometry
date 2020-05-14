@@ -9,7 +9,7 @@
   (error "Not given all number inputs")))
 
 (defun map-value (value in-min in-max out-min out-max)
-  
+
   "Map the value that from the in range to the out range."
 
   ;;ostart + (ostop - ostart) * ((value - istart) / (istop - istart))
@@ -99,6 +99,6 @@
     (apply #'map 'vector #'average vecs)))
 
 (defun dot-product-normalized (vec1 vec2)
-      "Return the normalized dot product of two vectors."
-      (let ((m (* (magnitude vec1) (magnitude vec2))))
-        (/ (dot-product vec1 vec2) m)))
+  "Return the normalized dot product of two vectors."
+  (let ((m (* (magnitude vec1) (magnitude vec2))))
+    (/ (dot-product vec1 vec2) m)))

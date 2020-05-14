@@ -1,4 +1,4 @@
-(in-package :cl-user)
+;;; package.lisp
 
 (defpackage :com.div0.geometry
   (:nicknames :geometry
